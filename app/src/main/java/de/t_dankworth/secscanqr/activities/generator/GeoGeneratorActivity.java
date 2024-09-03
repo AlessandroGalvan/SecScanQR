@@ -5,6 +5,8 @@ import android.app.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -62,20 +64,18 @@ public class GeoGeneratorActivity extends AppCompatActivity implements AdapterVi
             public void onClick(View view) {
                 latitude = tfLatitude.getText().toString().trim();
                 longtitude = tfLongtitude.getText().toString().trim();
-                if(latitude.equals("") || longtitude.equals("")){
+                if(latitude.isEmpty() || longtitude.isEmpty()){
                     Toast.makeText(getApplicationContext(), getResources().getText(R.string.error_geo_first), Toast.LENGTH_SHORT).show();
                 } else {
                     multiFormatWriter = new MultiFormatWriter();
                     try{
-                        if(north && east) {
-                            geo = "geo:" + latitude + "," + longtitude;
-                        } else if (!east && north){
-                            geo = "geo:" + latitude + ",-" + longtitude;
-                        } else if (!north && east){
-                            geo = "geo:-" + latitude + "," + longtitude;
-                        } else {
-                            geo = "geo:-" + latitude + ",-" + longtitude;
-                        }
+                        String temp1 = "geo:";
+                        String temp2 = ",";
+                        if(!north)
+                            temp1 = "geo:-";
+                        if(!east)
+                            temp2 = ",-";
+                        geo = temp1 + latitude + temp2 + longtitude;
                         openResultActivity();
                     } catch (Exception e){
                         Toast.makeText(activity.getApplicationContext(), getResources().getText(R.string.error_generate), Toast.LENGTH_LONG).show();
@@ -84,7 +84,6 @@ public class GeoGeneratorActivity extends AppCompatActivity implements AdapterVi
             }
         });
 
-        //Setup the Spinner Menu for the different formats
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.formats_geo_array, R.layout.spinner_item);
@@ -98,13 +97,9 @@ public class GeoGeneratorActivity extends AppCompatActivity implements AdapterVi
             longtitude = (String) savedInstanceState.get(STATE_LONGTITUDE);
             tfLongtitude.setText(longtitude);
             north = (Boolean) savedInstanceState.get(STATE_NORTH);
-            if(!north){
-                cbLatitude.setChecked(false);
-            }
+            cbLatitude.setChecked(north);
             east = (Boolean) savedInstanceState.get(STATE_EAST);
-            if(!east){
-                cbLongtitude.setChecked(false);
-            }
+            cbLongtitude.setChecked(east);
         }
     }
 
@@ -112,7 +107,7 @@ public class GeoGeneratorActivity extends AppCompatActivity implements AdapterVi
      * This method saves all data before the Activity will be destroyed
      */
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState){
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
 
         savedInstanceState.putString(STATE_LATITUDE, latitude);
@@ -127,11 +122,9 @@ public class GeoGeneratorActivity extends AppCompatActivity implements AdapterVi
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String compare = parent.getItemAtPosition(position).toString();
+        format = 9;
         if(compare.equals("AZTEC")){
             format = 10;
-        }
-        else if(compare.equals("QR_CODE")){
-            format = 9;
         }
     }
 
@@ -144,19 +137,9 @@ public class GeoGeneratorActivity extends AppCompatActivity implements AdapterVi
      * Handles functionality behind the Checkboxes
      */
     public void onClickCheckboxes(View v){
-        if(cbLatitude.isChecked() && cbLongtitude.isChecked()){
-            north = true;
-            east = true;
-        } else if(!cbLatitude.isChecked() && cbLongtitude.isChecked()){
-            north = false;
-            east = true;
-        } else if(cbLatitude.isChecked() && !cbLongtitude.isChecked()){
-            north = true;
-            east = false;
-        } else{
-            north = false;
-            east = false;
-        }
+        // ottimizzata
+        north = cbLatitude.isChecked();
+        east = cbLongtitude.isChecked();
     }
 
     /**
