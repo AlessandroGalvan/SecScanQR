@@ -1,3 +1,4 @@
+
 package de.t_dankworth.secscanqr.activities.generator;
 
 import android.content.Intent;
@@ -30,7 +31,7 @@ public class VCardGeneratorActivity extends AppCompatActivity implements Adapter
 
     EditText tfFirstName, tfName, tfOrg, tfTeleWork, tfTelePrivate, tfMobil, tfEmail, tfWeb, tfStreet, tfPLZ, tfCity, tfState, tfCountry, tfPhoto, tfBday, tfNote;
     int format;
-    String[] text2Qr = new String[16];;
+    String[] text2Qr = new String[16];
     String vcardCode;
     Button btnGenerate;
     private static final String STATE_TEXT = MainActivity.class.getName();
@@ -51,7 +52,7 @@ public class VCardGeneratorActivity extends AppCompatActivity implements Adapter
             @Override
             public void onClick(View view) {
                 insertValuesIntoArray();
-                if(text2Qr[0].equals("") && text2Qr[1].equals("")){
+                if(text2Qr[0].isEmpty() && text2Qr[1].isEmpty()){
                     Toast.makeText(getApplicationContext(), getResources().getText(R.string.error_fn_or_name_first), Toast.LENGTH_SHORT).show();
                 } else {
                     buildVCardCode();
@@ -108,46 +109,48 @@ public class VCardGeneratorActivity extends AppCompatActivity implements Adapter
      * Initializes all input fields
      */
     private void initializeInputFields(){
-        tfFirstName = (EditText) findViewById(R.id.txtFN);
-        tfName = (EditText) findViewById(R.id.txtName);
-        tfBday = (EditText) findViewById(R.id.txtBday);
-        tfOrg = (EditText) findViewById(R.id.txtOrg);
-        tfPhoto = (EditText) findViewById(R.id.txtPhotoUri);
-        tfTeleWork = (EditText) findViewById(R.id.txtTeleWork);
-        tfTelePrivate = (EditText) findViewById(R.id.txtTelePrivat);
-        tfMobil = (EditText) findViewById(R.id.txtMobil);
-        tfEmail = (EditText) findViewById(R.id.txtEmail);
-        tfWeb = (EditText) findViewById(R.id.txtWeb);
-        tfStreet = (EditText) findViewById(R.id.txtStreet);
-        tfPLZ = (EditText) findViewById(R.id.txtPLZ);
-        tfCity = (EditText) findViewById(R.id.txtCity);
-        tfState = (EditText) findViewById(R.id.txtState);
-        tfCountry = (EditText) findViewById(R.id.txtCountry);
-        tfNote = (EditText) findViewById(R.id.txtNote);
+        tfFirstName = findViewById(R.id.txtFN);
+        tfName = findViewById(R.id.txtName);
+        tfBday = findViewById(R.id.txtBday);
+        tfOrg =  findViewById(R.id.txtOrg);
+        tfPhoto =  findViewById(R.id.txtPhotoUri);
+        tfTeleWork =  findViewById(R.id.txtTeleWork);
+        tfTelePrivate =  findViewById(R.id.txtTelePrivat);
+        tfMobil =  findViewById(R.id.txtMobil);
+        tfEmail =  findViewById(R.id.txtEmail);
+        tfWeb =  findViewById(R.id.txtWeb);
+        tfStreet =  findViewById(R.id.txtStreet);
+        tfPLZ =  findViewById(R.id.txtPLZ);
+        tfCity =  findViewById(R.id.txtCity);
+        tfState =  findViewById(R.id.txtState);
+        tfCountry =  findViewById(R.id.txtCountry);
+        tfNote =  findViewById(R.id.txtNote);
     }
 
     /**
      * The values of the input fields will be placed into a string array
      */
     private void insertValuesIntoArray(){
-        text2Qr[0] = tfName.getText().toString().trim();
-        text2Qr[1] = tfFirstName.getText().toString().trim();
-        text2Qr[2] = tfBday.getText().toString().trim();
-        text2Qr[3] = tfOrg.getText().toString().trim();
-        text2Qr[4] = tfPhoto.getText().toString().trim();
-        text2Qr[5] = tfWeb.getText().toString().trim();
-        text2Qr[6] = tfEmail.getText().toString().trim();
-        text2Qr[7] = tfMobil.getText().toString().trim();
-        text2Qr[8] = tfTeleWork.getText().toString().trim();
-        text2Qr[9] = tfTelePrivate.getText().toString().trim();
-        text2Qr[10] = tfStreet.getText().toString().trim();
-        text2Qr[11] = tfCity.getText().toString().trim();
-        text2Qr[12] = tfState.getText().toString().trim();
-        text2Qr[13] = tfPLZ.getText().toString().trim();
-        text2Qr[14] = tfCountry.getText().toString().trim();
-        text2Qr[15] = tfNote.getText().toString().trim();
+        text2Qr[0] = txtStrTrim(tfName);
+        text2Qr[1] = txtStrTrim(tfFirstName);
+        text2Qr[2] = txtStrTrim(tfBday);
+        text2Qr[3] = txtStrTrim(tfOrg);
+        text2Qr[4] = txtStrTrim(tfPhoto);
+        text2Qr[5] = txtStrTrim(tfWeb);
+        text2Qr[6] = txtStrTrim(tfEmail);
+        text2Qr[7] = txtStrTrim(tfMobil);
+        text2Qr[8] = txtStrTrim(tfTeleWork);
+        text2Qr[9] = txtStrTrim(tfTelePrivate);
+        text2Qr[10] = txtStrTrim(tfStreet);
+        text2Qr[11] = txtStrTrim(tfCity);
+        text2Qr[12] = txtStrTrim(tfState);
+        text2Qr[13] = txtStrTrim(tfPLZ);
+        text2Qr[14] = txtStrTrim(tfCountry);
+        text2Qr[15] = txtStrTrim(tfNote);
     }
-
+    private String txtStrTrim(EditText item){
+        return item.getText().toString().trim();
+    }
     /**
      * This will write the values of the array into the input fields
      * Needed if screen gets rotated
@@ -175,38 +178,55 @@ public class VCardGeneratorActivity extends AppCompatActivity implements Adapter
      * This method builds the final string which gets transformed into a qr-code
      */
     private void buildVCardCode(){
-        vcardCode = "BEGIN:VCARD\nVERSION:2.1\nN:" + text2Qr[0] + ";" +text2Qr[1] + "\n";
-        if(!text2Qr[2].equals("")){
-            vcardCode += "BDAY:" + text2Qr[2] + "\n";
+        StringBuilder temp = new StringBuilder();
+        temp.append("BEGIN:VCARD\nVERSION:2.1\nN:").
+                append(text2Qr[0]).
+                append(";").
+                append(text2Qr[1]).
+                append("\n");
+        for (int i = 2; i <= 15; i++) {
+            if(!text2Qr[i].isEmpty())
+                switch (i){
+                    case 2:
+                        temp.append("BDAY:").append(text2Qr[2]).append("\n");
+                        break;
+                    case 3:
+                        temp.append("ORG:").append(text2Qr[3]).append("\n");
+                        break;
+                    case 4:
+                        temp.append("PHOTO;VALUE=URI:").append(text2Qr[4]).append("\n");
+                        break;
+                    case 5:
+                        temp.append("URL:").append(text2Qr[5]).append("\n");
+                        break;
+                    case 6:
+                        temp.append("EMAIL;TYPE=INTERNET:").append(text2Qr[6]).append("\n");
+                        break;
+                    case 7:
+                        temp.append("TEL;CELL:").append(text2Qr[7]).append("\n");
+                        break;
+                    case 8:
+                        temp.append("TEL;WORK;VOICE:").append(text2Qr[8]).append("\n");
+                        break;
+                    case 9:
+                        temp.append("TEL;HOME;VOICE:").append(text2Qr[9]).append("\n");
+                        break;
+                    case 10:
+                        temp.append("ADR:;;").append(text2Qr[10]).append(";");
+                        i++;
+                    case 11:
+                        for (;i <= 13; i++) {
+                            temp.append(text2Qr[i]).append(";");
+                        }
+                    case 14:
+                        temp.append(text2Qr[11]).append("\n");
+                        i++;
+                        break;
+                    case 15:
+                        temp.append("NOTE:").append(text2Qr[15]).append("\n");
+                }
         }
-        if(!text2Qr[3].equals("")){
-            vcardCode += "ORG:" + text2Qr[3] + "\n";
-        }
-        if(!text2Qr[4].equals("")){
-            vcardCode += "PHOTO;VALUE=uri:" + text2Qr[4] + "\n";
-        }
-        if(!text2Qr[5].equals("")){
-            vcardCode += "URL:" + text2Qr[5] + "\n";
-        }
-        if(!text2Qr[6].equals("")){
-            vcardCode += "EMAIL;TYPE=INTERNET:" + text2Qr[6] + "\n";
-        }
-        if(!text2Qr[7].equals("")){
-            vcardCode += "TEL;CELL:" + text2Qr[7] + "\n";
-        }
-        if(!text2Qr[8].equals("")){
-            vcardCode += "TEL;WORK;VOICE:" + text2Qr[8] + "\n";
-        }
-        if(!text2Qr[9].equals("")){
-            vcardCode += "TEL;HOME;VOICE:" + text2Qr[9] + "\n";
-        }
-        if((!text2Qr[10].equals("")) || (!text2Qr[11].equals("")) || (!text2Qr[12].equals("")) || (!text2Qr[13].equals("")) || (!text2Qr[14].equals(""))){
-            vcardCode += "ADR:;;" + text2Qr[10] + ";" + text2Qr[11] + ";" + text2Qr[12] + ";" + text2Qr[13] + ";" + text2Qr[14] + "\n";
-        }
-        if(!text2Qr[15].equals("")){
-            vcardCode += "NOTE:" + text2Qr[15] + "\n";
-        }
-        vcardCode += "END:VCARD";
+        vcardCode = temp.append("END:VCARD").toString();
     }
 
     /**
