@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/backgroundcolor"
+    tools:context="de.t_dankworth.secscanqr.activities.HistoryDetailsActivity">
+
+    <FrameLayout
+        android:id="@+id/myContainer"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_rect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="9dp"> <!-- Add this line -->
+        <!-- Add other views (buttons, text, etc.) inside this container -->
+
+        <ImageView
+            android:id="@+id/resultImageHistory"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center|bottom"
+            android:layout_margin="10sp"
+            android:background="@drawable/border_image"
+            android:clickable="true"
+            android:focusable="true"
+            android:maxWidth="250sp"
+            android:maxHeight="250sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/labelFormat"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:padding="10sp"
+            android:text="@string/title_format"
+            android:textColor="@color/colorWhiteBackground"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@+id/resultImageMain"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tvFormatHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:padding="10sp"
+            android:textColor="@color/colorWhiteBackground"
+            android:textSize="18sp"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@+id/resultImageMain"
+            app:layout_constraintTop_toBottomOf="@+id/labelFormat"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/labelInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:padding="10sp"
+            android:text="@string/title_information"
+            android:textColor="@color/colorWhiteBackground"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resultImageMain"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tvTxtqrcodeHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="234dp"
+            android:layout_marginTop="80dp"
+            android:padding="10sp"
+            android:text='@string/default_text_main_activity'
+            android:textColor="@color/colorWhiteBackground"
+            android:textSize="18sp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelInformation" />
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/history_action_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?attr/bottomnavcolor"
+        app:itemIconTint="@color/colorAccent"
+        app:itemTextColor="@color/colorAccent"
+        app:menu="@menu/history_action_navigation" />
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fafafa</color>
+    <color name="colorPrimaryDark">#c7c7c7</color>
+    <color name="colorWhiteBackground">#FFFFFF</color>
+    <color name="colorAccent">#ea442d</color>
+    <color name="listSeperator">#8c8c8c</color>
+    <color name="actionBarIcon_dark">#000</color>
+    <color name="actionBarIcon_light">#FFFFFF</color>
+    <color name="lightSeperator">#ededed</color>
+    <color name="deepBlue">#0336FF</color>
+    <color name="purple">#6200EE</color>
+    <color name="yellow">#FFDE03</color>
+    <color name="green">#00bfa5</color>
+    <color name="pink">#FF0266</color>
+
+
+</resources>

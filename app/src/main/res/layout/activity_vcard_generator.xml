@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor"
+    tools:context="de.t_dankworth.secscanqr.activities.generator.VCardGeneratorActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16sp"
+        android:layout_marginBottom="65sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:layout_weight="0.00"
+                android:paddingStart="8dp"
+                android:text="@string/tv_format" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:layout_weight="0.00" />
+
+            <EditText
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textColor="?attr/textcolor"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtFN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:hint="@string/hint_fn"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtBday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:hint="@string/hint_bday"
+                android:ems="10"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/txtOrg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_org"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtPhotoUri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:hint="@string/hint_photo"
+                android:ems="10"
+                android:inputType="textUri" />
+
+            <EditText
+                android:id="@+id/txtWeb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_web"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/txtMobil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_mobil"
+                android:inputType="phone"
+                android:textAlignment="viewStart"/>
+
+            <EditText
+                android:id="@+id/txtTeleWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_tele_work"
+                android:inputType="phone"
+                android:textAlignment="viewStart"/>
+
+            <EditText
+                android:id="@+id/txtTelePrivat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_tele_private"
+                android:inputType="phone"
+                android:textAlignment="viewStart"/>
+
+            <EditText
+                android:id="@+id/txtStreet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_street"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtPLZ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_plz"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_city"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_state"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_country"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="@string/hint_note"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnGenerateVCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sh_sa_button"
+        android:textColor="@android:color/white"
+        android:layout_margin="10sp"
+        android:text="@string/title_generate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

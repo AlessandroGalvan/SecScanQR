@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor"
+    tools:context="de.t_dankworth.secscanqr.activities.generator.IDCardGenerateActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16sp"
+        android:layout_marginBottom="65sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:layout_weight="0.00"
+                android:paddingStart="8dp"
+                android:text="@string/tv_format" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:layout_weight="0.00" />
+
+            <EditText
+                android:id="@+id/documentCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textColor="?attr/textcolor"
+                android:hint="@string/document_code"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/documentNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:hint="document number"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/documentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:hint="document name"
+                android:ems="10"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="surname"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:hint="@string/hint_name"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/birthplace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="birthplace"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/birthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="birthdate"
+                android:inputType="date"/>
+
+            <EditText
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="gender"
+                android:inputType="text"
+                android:textAlignment="viewStart"/>
+
+            <EditText
+                android:id="@+id/height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="height"
+                android:inputType="numberDecimal"
+                android:textAlignment="viewStart"/>
+
+            <EditText
+                android:id="@+id/nationality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="nationality"
+                android:inputType="text"
+                android:textAlignment="viewStart"/>
+
+            <EditText
+                android:id="@+id/emissionDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="emission date"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/expiry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="expiry"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/residence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="residence"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/fiscalCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
+                android:ems="10"
+                android:hint="fiscal code"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnGenerateID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sh_sa_button"
+        android:textColor="@android:color/white"
+        android:layout_margin="10sp"
+        android:text="@string/title_generate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
